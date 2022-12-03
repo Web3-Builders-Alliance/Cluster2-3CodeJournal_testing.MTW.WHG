@@ -68,6 +68,8 @@ describe("Messages Fullstack Test", () => {
         let res = await client.sendTokens(await getAddress(mnemonic), receiver, [{denom:"ujunox", amount:"1000000"}], "auto");
         console.log(res);
     }).timeout(100000);
+    
+    
 
     //same as
     //junod tx wasm store artifacts/messages.wasm --from wallet --node https://rpc.uni.juno.deuslabs.fi --chain_id=uni-3 --gas-price=0.025ujunox --gas auto

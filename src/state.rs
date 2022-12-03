@@ -11,7 +11,7 @@ pub struct Message {
     pub topic: String,
     pub message: String
 }
-
+//message stored by id
 pub const CURRENT_ID: Item<u128> = Item::new("current_id");
-
+//key durrent_id, value message
 pub const MESSAGES: Map<u128, Message> = Map::new("messages");
