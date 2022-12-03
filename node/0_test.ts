@@ -74,7 +74,7 @@ describe("Messages Fullstack Test", () => {
         console.log(res);
     }).timeout(100000);
 
-    xit("Add Message on testnet", async() => {
+    it("Add Message on testnet", async() => {
         let client = await setupClient(mnemonic, rpcEndpoint, "0.025ujunox");
         let res = await client.execute(await getAddress(mnemonic), contract_address, { add_message: { message: "bla bla", topic: "topic"}}, "auto");
         console.log(res);
