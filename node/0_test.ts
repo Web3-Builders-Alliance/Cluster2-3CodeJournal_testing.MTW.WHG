@@ -80,7 +80,7 @@ describe("Messages Fullstack Test", () => {
         console.log(res);
     }).timeout(20000);
 
-    it("Query all messages on testnet", async () => {
+    xit("Query all messages on testnet", async () => {
         let client = await setupClient(mnemonic, rpcEndpoint, "0.025ujunox");
         let res = await client.queryContractSmart(contract_address, { get_all_message: { message: "", topic:"" } } );
         console.log(res);
@@ -88,15 +88,19 @@ describe("Messages Fullstack Test", () => {
 
     xit("Query get all messages by addr", async() => {
         let client = await setupClient(mnemonic, rpcEndpoint, "0.025ujunox");
-        let res = await client.queryContractSmart(contract_address, { get_messages_by_addr: { address: "" } } );
+        let res = await client.queryContractSmart(contract_address, { get_messages_by_addr: { address: "juno1weqt9ksm9k8yq2ekvxlae9jday76azaywnd65p4d9n8gppcura9svq38vv" } } );
         console.log(res);
     }).timeout(100000);
 
     xit("Query get current id", async() => {
-
+        let client = await setupClient(mnemonic, rpcEndpoint, "0.025ujunox");
+        let res = await client.queryContractSmart(contract_address, { get_current_id: { } } );
+        console.log(res);
     }).timeout(100000);
 
     xit("Query get messages by topic", async() => {
-
+        let client = await setupClient(mnemonic, rpcEndpoint, "0.025ujunox");
+        let res = await client.queryContractSmart(contract_address, { get_messages_by_topic: {topic: "" } } );
+        console.log(res);
     }).timeout(100000);
 });
