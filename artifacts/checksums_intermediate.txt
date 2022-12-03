@@ -1,1 +1,1 @@
-aae8470fe2eb2ec5b93e9a35e07770a7b71adc0f964c37dc08192374e0c0a713  ./target/wasm32-unknown-unknown/release/messages.wasm
+f9fbc58c824c7f3fe064d1de15475155217991a4070d1d4a023241471971e360  ./target/wasm32-unknown-unknown/release/messages.wasm

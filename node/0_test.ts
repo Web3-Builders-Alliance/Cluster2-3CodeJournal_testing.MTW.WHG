@@ -1,3 +1,7 @@
+//we need to create Node Folder and install npm 
+//we testing witn npm test command 
+//make sure you're in the node folder when using npm
+
 import { SigningCosmWasmClient, Secp256k1HdWallet, GasPrice, Coin } from "cosmwasm";
 
 import * as fs from 'fs';
@@ -15,8 +19,10 @@ const code_id = 2509;
 
 const contract_address = "juno1weqt9ksm9k8yq2ekvxlae9jday76azaywnd65p4d9n8gppcura9svq38vv";
 
+//uploading from Cosmwasm-js
 async function setupClient(mnemonic: string, rpc: string, gas: string | undefined): Promise<SigningCosmWasmClient> {
     if (gas === undefined) {
+        //generate wallet by using the number of words in the mnemonic
         let wallet = await Secp256k1HdWallet.fromMnemonic(mnemonic, { prefix: 'juno'});
         let client = await SigningCosmWasmClient.connectWithSigner(rpc, wallet);
         return client;
@@ -26,15 +32,19 @@ async function setupClient(mnemonic: string, rpc: string, gas: string | undefine
         let client = await SigningCosmWasmClient.connectWithSigner(rpc, wallet, { gasPrice: gas_price });
         return client;
     }
+     
 }
 
 async function getAddress(mnemonic: string, prefix: string = 'juno') {
     let wallet = await Secp256k1HdWallet.fromMnemonic(mnemonic, { prefix });
     let accounts = await wallet.getAccounts();
     return accounts[0].address;
+    
 }
 
 describe("Messages Fullstack Test", () => {
+    //test functions 
+    //with x turn off the test
     xit("Generate Wallet", async () => {
         let wallet = await Secp256k1HdWallet.generate(12);
         console.log(wallet.mnemonic);
@@ -74,9 +84,9 @@ describe("Messages Fullstack Test", () => {
         console.log(res);
     }).timeout(100000);
 
-    xit("Add Message on testnet", async() => {
+    it("Add Message on testnet", async() => {
         let client = await setupClient(mnemonic, rpcEndpoint, "0.025ujunox");
-        let res = await client.execute(await getAddress(mnemonic), contract_address, { add_message: { message: "bla bla", topic: "topic"}}, "auto");
+        let res = await client.execute(await getAddress(mnemonic), contract_address, { add_message: { message: "bla bla", topic: "topics"}}, "auto");
         console.log(res);
     }).timeout(20000);
 

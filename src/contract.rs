@@ -51,6 +51,7 @@ pub fn add_message(deps: DepsMut, info:MessageInfo, topic:String, message:String
 
     MESSAGES.save(deps.storage, new_message.id.u128(), &new_message)?;
 
+
     //save current id
     CURRENT_ID.save(deps.storage, &current_id)?;
     
