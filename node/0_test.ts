@@ -75,13 +75,16 @@ describe("Messages Fullstack Test", () => {
     }).timeout(100000);
 
     xit("Add Message on testnet", async() => {
+        let client = await setupClient(mnemonic, rpcEndpoint, "0.025ujunox");
+        let res = await client.execute(await getAddress(mnemonic), contract_address, { add_message: { message: "bla bla", topic: "topic"}}, "auto");
+        console.log(res);
     }).timeout(20000);
 
     xit("Query all messages on testnet", async () => {
         
     }).timeout(50000);
 
-    it("Query get all messages by addr", async() => {
+    xit("Query get all messages by addr", async() => {
         let client = await setupClient(mnemonic, rpcEndpoint, "0.025ujunox");
         let res = await client.queryContractSmart(contract_address, { get_messages_by_addr: { address: "" } } );
         console.log(res);
